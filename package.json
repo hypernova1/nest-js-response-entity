@@ -1,0 +1,17 @@
+{
+  "name": "nestjs-response-entity",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "@nestjs/core": "10.4.7"
+  },
+  "private": true
+}
