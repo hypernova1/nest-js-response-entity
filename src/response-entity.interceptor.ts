@@ -1,8 +1,9 @@
-import { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { map } from "rxjs";
-import ResponseEntity from "./response-entity";
+import { ResponseEntity } from "./response-entity";
 
-export default class ResponseEntityInterceptor implements NestInterceptor {
+@Injectable()
+export class ResponseEntityInterceptor implements NestInterceptor {
     intercept(context: ExecutionContext, next: CallHandler<any>) {
         const response = context.switchToHttp().getResponse();
 
@@ -13,7 +14,7 @@ export default class ResponseEntityInterceptor implements NestInterceptor {
                     const headerKeys = Object.keys(headers);
                     for (const headerKey of headerKeys) {
                         const headerValue = headers[headerKey];
-                        response.setHeaders.set(headerKey, headerValue);
+                        response.setHeader(headerKey, headerValue);
                     }
                     response.statusCode = data.statusCode;
                     return data.body;
@@ -23,5 +24,4 @@ export default class ResponseEntityInterceptor implements NestInterceptor {
             })
         )
     }
-
 }

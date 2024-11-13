@@ -1,6 +1,6 @@
 export type HeaderType = 'Content-Type' | 'Content-Language' | 'Content-Encoding' | 'Content-Length' | 'Content-Location' | 'Content-Disposition' | 'Content-Security-Policy' | 'Accept' | string;
 
-export default class HttpHeaders {
+export class HttpHeaders {
     private _value: Record<HeaderType, string> = {};
 
     add(key: HeaderType, value: string) {

@@ -1,6 +1,6 @@
-import HttpHeaders from "./http-headers";
+import { HttpHeaders } from "./http-headers";
 
-export default class ResponseEntity<T> {
+export class ResponseEntity<T> {
 
     private readonly _statusCode: number;
     private readonly _body?: T;

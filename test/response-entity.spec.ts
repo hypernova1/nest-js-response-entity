@@ -1,5 +1,5 @@
-import ResponseEntity from "../src/response-entity";
-import HttpHeaders from "../src/http-headers";
+import { ResponseEntity } from "../src";
+import { HttpHeaders } from "../src/http-headers";
 
 describe('Test', () => {
     it('create', () => {
