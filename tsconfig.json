@@ -1,12 +1,9 @@
 {
+  "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "outDir": "dist"
-  },
-  "include": ["src"]
+    "module": "esnext",
+    "outDir": "dist/mjs",
+    "target": "esnext",
+    "experimentalDecorators": true
+  }
 }

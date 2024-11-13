@@ -3,12 +3,12 @@ import HttpHeaders from "./http-headers";
 export default class ResponseEntity<T> {
 
     private readonly _statusCode: number;
-    private readonly _data?: T;
+    private readonly _body?: T;
     private readonly _headers: HttpHeaders = new HttpHeaders();
 
     constructor(statusCode: number, data?: T, headers?: Record<string, string>) {
         this._statusCode = statusCode;
-        this._data = data;
+        this._body = data;
         if (headers) {
             this._headers.addAll(headers);
         }
@@ -18,20 +18,20 @@ export default class ResponseEntity<T> {
         return this._statusCode;
     }
 
-    get data(): T | undefined {
-        return this._data;
+    get body(): T | undefined {
+        return this._body;
     }
 
     static ok<T>(data?: T) {
-        return new ResponseEntity(200, data)
+        return new ResponseEntity(200, data);
     }
 
     static created<T>(data?: T) {
-        return new ResponseEntity(201, data)
+        return new ResponseEntity(201, data);
     }
 
     static noContent() {
-        return new ResponseEntity(204)
+        return new ResponseEntity(204);
     }
 
     headers(headers: HttpHeaders): void {

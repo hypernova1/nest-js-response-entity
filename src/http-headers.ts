@@ -1,15 +1,17 @@
-export default class HttpHeaders {
-    private _value: Record<string, string> = {};
+export type HeaderType = 'Content-Type' | 'Content-Language' | 'Content-Encoding' | 'Content-Length' | 'Content-Location' | 'Content-Disposition' | 'Content-Security-Policy' | 'Accept' | string;
 
-    add(key: string, value: string) {
+export default class HttpHeaders {
+    private _value: Record<HeaderType, string> = {};
+
+    add(key: HeaderType, value: string) {
         this._value[key] = value;
     }
 
-    addAll(headers: Record<string, string>) {
-        this._value = { ...this._value, ...headers }
+    addAll(headers: Record<HeaderType, string>) {
+        this._value = { ...this._value, ...headers };
     }
 
-    get getAll(): Record<string, string> {
+    get getAll(): Record<HeaderType, string> {
         return this._value;
     }
 }
