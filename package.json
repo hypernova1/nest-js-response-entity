@@ -1,6 +1,6 @@
 {
   "name": "nestjs-response-entity",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "repository": "git@github.com:hypernova1/nestjs-response-entity.git",
   "main": "dist/cjs/index.js",
