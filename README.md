@@ -32,17 +32,17 @@ import { ResponseEntity, HttpHeaders } from 'nestjs-response-entity';
 export class ExampleController {
     @Get()
     getExample() {
-        return ResponseEntity.ok({message: 'Success!'});
+        return ResponseEntity.ok({ message: 'Success!' });
     }
 
     // add headers
     @Post()
     getExample() {
-        const responseEntity = ResponseEntity.ok({message: 'Success!'});
+        const responseEntity = ResponseEntity.created('http://localhost:3000');
         const headers = new HttpHeaders();
-        header.add('Location', 'http://localhost:3000');
+        header.add('Accept', 'application/json');
         responseEntity.headers(headers);
-        return ResponseEntity.ok({message: 'Success!'});
+        return responseEntity;
     }
 }
 ~~~

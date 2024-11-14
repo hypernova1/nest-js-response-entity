@@ -17,7 +17,7 @@ export class ResponseEntityInterceptor implements NestInterceptor {
                         response.setHeader(headerKey, headerValue);
                     }
                     response.statusCode = data.statusCode;
-                    return data.body;
+                    return data.getBody;
                 }
 
                 return data;

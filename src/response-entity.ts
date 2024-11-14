@@ -3,8 +3,8 @@ import { HttpHeaders } from "./http-headers";
 export class ResponseEntity<T> {
 
     private readonly _statusCode: number;
-    private readonly _body?: T;
     private readonly _headers: HttpHeaders = new HttpHeaders();
+    private _body?: T;
 
     constructor(statusCode: number, data?: T, headers?: Record<string, string>) {
         this._statusCode = statusCode;
@@ -18,24 +18,40 @@ export class ResponseEntity<T> {
         return this._statusCode;
     }
 
-    get body(): T | undefined {
+    get getBody(): T | undefined {
         return this._body;
+    }
+
+    static status(status: number) {
+        return new ResponseEntity(status);
     }
 
     static ok<T>(data?: T) {
         return new ResponseEntity(200, data);
     }
 
-    static created<T>(data?: T) {
-        return new ResponseEntity(201, data);
+    static created(location?: string) {
+        const responseEntity = new ResponseEntity(201);
+        if (location) {
+            const headers = new HttpHeaders();
+            headers.add('Location', location);
+            responseEntity.headers(headers);
+        }
+        return responseEntity;
     }
 
     static noContent() {
         return new ResponseEntity(204);
     }
 
-    headers(headers: HttpHeaders): void {
+    headers(headers: HttpHeaders): ResponseEntity<T> {
         this._headers.addAll(headers.getAll);
+        return this;
+    }
+
+    body(body: T) {
+        this._body = body;
+        return this;
     }
 
     get getHeaders() {

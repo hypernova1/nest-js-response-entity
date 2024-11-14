@@ -1,4 +1,4 @@
-export type HeaderType = 'Content-Type' | 'Content-Language' | 'Content-Encoding' | 'Content-Length' | 'Content-Location' | 'Content-Disposition' | 'Content-Security-Policy' | 'Accept' | string;
+export type HeaderType = 'Content-Type' | 'Content-Language' | 'Content-Encoding' | 'Content-Length' | 'Content-Location' | 'Content-Disposition' | 'Content-Security-Policy' | 'Accept' | 'Location' | string;
 
 export class HttpHeaders {
     private _value: Record<HeaderType, string> = {};
